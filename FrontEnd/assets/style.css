@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ol, ul{
 	list-style: none;
 }
 blockquote, q {
@@ -216,3 +216,47 @@ footer nav ul {
 	width: 100px;
 }
 
+.login h2{
+	display: flex;
+	justify-content: center;
+}
+
+.login form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.login input{
+	width: 380px;
+    height: 50px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: white;
+	margin-top: 30px;
+}
+
+.login .connection{
+	background: #1D6154;
+    border-radius: 60px;
+	width: 180px;
+}
+
+.mail{
+	display: flex;
+	flex-direction: column;
+}
+
+.mdp{
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+.mdp-oublie{
+	display: flex;
+	justify-content: center;
+	color: #3D3D3D;
+	text-decoration: underline;
+}
