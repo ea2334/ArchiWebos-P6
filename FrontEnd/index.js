@@ -25,6 +25,15 @@ fetch("http://localhost:5678/api/works")
       .then(categories => {
         const filtersContainer = document.getElementById("filtres");
 
+        const allFilterButton = document.createElement("button");
+        allFilterButton.textContent = "Tous";
+        allFilterButton.classList.add("filtres-button");
+        allFilterButton.addEventListener("click", function() {
+          displayWorks(works);
+          updateActiveFilterButton(this);
+        });
+        filtersContainer.appendChild(allFilterButton);
+
         categories.forEach(category => {
           const filterButton = document.createElement("button");
           filterButton.textContent = category.name;
@@ -36,11 +45,11 @@ fetch("http://localhost:5678/api/works")
             displayWorks(filteredWorks);
             updateActiveFilterButton(this);
           });
-
           filtersContainer.appendChild(filterButton);
         });
       });
   });
+
 
 
 

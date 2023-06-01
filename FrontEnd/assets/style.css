@@ -251,3 +251,8 @@ cursor: pointer;
 margin-left: 10px;
 margin-right: 10px;
 }
+
+.filtres-button:hover{
+	background-color: #1D6154;
+	color: white;
+}
