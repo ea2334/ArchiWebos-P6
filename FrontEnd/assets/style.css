@@ -247,4 +247,7 @@ color: #1D6154;
 text-align: center;
 font-size: 12px;
 font-weight: 700;
+cursor: pointer;
+margin-left: 10px;
+margin-right: 10px;
 }
