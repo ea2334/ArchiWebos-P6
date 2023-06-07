@@ -50,8 +50,16 @@ fetch("http://localhost:5678/api/works")
       });
   });
 
+const token = localStorage.getItem("token");
 
+fetch("http://localhost:5678/api/works", {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+})
+  .then(response => response.json())
+  .then(works => {
 
+    displayWorks(works);
+  })
   
-    
-    
