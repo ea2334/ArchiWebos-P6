@@ -1,11 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const loginForm = document.getElementById("connexion");
-    if (!loginForm) {
-      console.error("Formulaire de connexion non trouvé.");
-      return;
-    }
-  
-    loginForm.addEventListener("submit", function(event) {
+ loginForm.addEventListener("submit", function(event) {
       event.preventDefault();
   
       const email = document.getElementById("email").value;
@@ -30,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       })
     });
-  });
+  
   
   
   
