@@ -16,7 +16,6 @@
 
         if (data.token) {
             localStorage.setItem("token", data.token);
-
             window.location.href = "index.html";
         } else {
           console.error("Échec de la connexion :", data);
