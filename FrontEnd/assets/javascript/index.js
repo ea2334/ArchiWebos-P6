@@ -50,16 +50,17 @@ fetch("http://localhost:5678/api/works")
       });
   });
 
+let modal = null;
 
 const openModal = function (e) {
-  e.preventDefault()
-  const target = document.querySelector(e.target.getAttribute('href'))
-  target.style.display = null
-  target.removeAttribute('aria-hidden')
+  e.preventDefault();
+  modal = document.querySelector(e.target.getAttribute('href'));
+  modal.style.display = null;
+  modal.removeAttribute('aria-hidden');
 }
 
-  document.querySelectorAll('js.modal').forEach(a => {
-    a.addEventListener('click', openModal)
+  document.querySelectorAll('.js-modal').forEach(a => {
+    a.addEventListener('click', openModal);
   })
 
   
