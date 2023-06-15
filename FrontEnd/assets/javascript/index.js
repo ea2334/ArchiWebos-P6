@@ -50,16 +50,17 @@ fetch("http://localhost:5678/api/works")
       });
   });
 
-const token = localStorage.getItem("token");
 
-fetch("http://localhost:5678/api/works", {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-})
-  .then(response => response.json())
-  .then(works => {
+const openModal = function (e) {
+  e.preventDefault()
+  const target = document.querySelector(e.target.getAttribute('href'))
+  target.style.display = null
+  target.removeAttribute('aria-hidden')
+}
 
-    displayWorks(works);
+  document.querySelectorAll('js.modal').forEach(a => {
+    a.addEventListener('click', openModal)
   })
+
+  
   
