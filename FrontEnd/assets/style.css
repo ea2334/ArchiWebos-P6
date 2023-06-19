@@ -276,7 +276,7 @@ margin-right: 10px;
 	margin-top: 45px;
 }
 
-.modal-wrapper button{
+.modal-wrapper .ajout{
 	background-color: #1D6154;
     border-radius: 60px;
 	width: 40%;
@@ -284,6 +284,11 @@ margin-right: 10px;
 	margin-top: 300px;
 	margin-left: 120px;
 	color: white;
+	}
+
+	.fermer-js{
+		background: white;
+		color: black;
 	}
 
 
