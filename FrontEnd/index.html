@@ -7,18 +7,30 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	<div class="barre">
+
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="login.html" class="login">login</a></li>
-			<li><a href="login.html" class="logout">login</a></li>
+			<li>
+				<div class="login">
+				  <a href="login.html">login</a>
+				</div>
+				<div class="logout">
+				  <a href="login.html">logout</a>
+				</div>
+			  </li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -41,9 +53,10 @@
     <a href="#modal" class="js-modal">Modifier</a>
 
 	<aside id="modal" class="modal" aria-hidden="true" role="dialog" style="display: none;">
-		<div class="modal-wrapper">
+		<div class="modal-wrapper js-modal-stop">
 			<button class="fermer-js">X</button>
         <h3>Galerie photo</h1>
+			<div id="openmodal"></div>
 		<button class="ajout">Ajouter une photo</button>
 		<p class="supprimer">Supprimer une photo</p>
 		</div>
@@ -75,5 +88,7 @@
 </footer>
 <script src="assets/javascript/index.js"></script>
 <script src="assets/javascript/modal.js"></script>
+<script src="assets/javascript/logout.js"></script>
+<script src="assets/javascript/login.js"></script>
 </body>
 </html>

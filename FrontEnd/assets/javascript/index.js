@@ -50,7 +50,22 @@ fetch("http://localhost:5678/api/works")
       });
   });
 
+document.addEventListener("DOMContentLoaded", function() {
+  const isConnected = checkConnectionStatus();
+
+  const blackBar = document.querySelector(".barre");
+
+  if (isConnected) {
+    blackBar.style.display = "block";
+  } else {
+    blackBar.style.display = "none";
+  }
+});
+
+function checkConnectionStatus() {
+}
 
 
-  
+
+
   
