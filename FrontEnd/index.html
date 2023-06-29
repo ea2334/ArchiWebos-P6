@@ -15,25 +15,30 @@
 </head>
 <body>
 	<div class="barre">
-
+<div class="edition">
+	<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
+	<span>publier les changements</span>
+</div>
 	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>
-				<div class="login">
-				  <a href="login.html">login</a>
-				</div>
-				<div class="logout">
-				  <a href="login.html">logout</a>
-				</div>
-			  </li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+		  <li>projets</li>
+		  <li>contact</li>
+		  <li>
+			<div class="login">
+			  <a href="login.html">login</a>
+			</div>
+			<div class="logout">
+			  <a href="#" class="logout">logout</a>
+			</div>
+		  </li>
+		  <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
-	</nav>
+	  </nav>
+	  
+	  
 </header>
 <main>
 	<section id="introduction">
@@ -48,9 +53,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
+		<div class="projets_modifier">
 		<h2>Mes Projets</h2>
-
-    <a href="#modal" class="js-modal">Modifier</a>
+    <a href="#modal" class="js-modal"><i class="fa-regular fa-pen-to-square"></i>Modifier</a>
+		</div>
 
 	<aside id="modal" class="modal" aria-hidden="true" role="dialog" style="display: none;">
 		<div class="modal-wrapper js-modal-stop">
@@ -60,7 +66,7 @@
 		<button class="ajout">Ajouter une photo</button>
 		<p class="supprimer">Supprimer une photo</p>
 		</div>
-	</aside>
+    </aside>
 
 		<div id="filtres"></div>	  
 		<div class="gallery"></div>

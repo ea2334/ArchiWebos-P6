@@ -50,7 +50,8 @@ fetch("http://localhost:5678/api/works")
       });
   });
 
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener(function() {
   const isConnected = checkConnectionStatus();
 
   const blackBar = document.querySelector(".barre");

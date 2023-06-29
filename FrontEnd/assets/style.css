@@ -263,10 +263,11 @@ margin-right: 10px;
 
 .modal-wrapper{
 	overflow: auto;
-	width: 450px;
-	height: 550px;
+	width: 500px;
+	height: 800px;
 	padding: 20px;
 	background-color: white;
+	border-radius: 20px;
 }
 
 .modal-wrapper h3{
@@ -281,17 +282,24 @@ margin-right: 10px;
     border-radius: 60px;
 	width: 40%;
 	height: 30px;
-	margin-top: 300px;
 	margin-left: 120px;
 	color: white;
 	}
 
-	.fermer-js{
-		background: white;
-		color: black;
-	}
+.fermer-js{
+	background-color: white;
+	color: black;
+	border-style: none;
+	font-size: 22px;
+	cursor: pointer;
+	margin-left: 450px;
+}
 
-	
+.js-modal{
+	text-decoration: none;		
+	color: black;
+	margin-top: 10px;
+}	
 
 .modal-wrapper p{
 	color: #D65353;
@@ -299,6 +307,37 @@ margin-right: 10px;
 	margin-top: 20px;
 }
 
+.projets_modifier{
+	display: flex;
+    justify-content: center;
+	text-align: center;
+}
+
+.projets_modifier i{
+	margin-left: 20px;
+}
+
+#openmodal figcaption{
+	margin-left: 5px;
+}
+
+#openmodal img{
+	width: 75px;
+	height: 100px;
+	margin: 6px;
+}
+
+#openmodal i{
+	background: black;
+	color: white;
+}
+
+#openmodal {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 40px;
+	padding: 20px;
+}
 
 .login{
 	display: block;
@@ -308,12 +347,40 @@ margin-right: 10px;
 	display: none;
 }
 
+/*Barre*/
+
 .barre{
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 40px;
+	height: 50px;
 	background-color: black;
+	display: none;
   }
   
+.edition{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+  
+.edition p{
+	color: white;
+    font-size: 16px;
+}
+
+.edition span{
+
+	display: flex;
+	justify-content: center;
+	width: 220px;
+	padding: 5px;
+	border-radius: 50px;
+	background-color: white;
+	font-size: 16px;
+	margin-left: 30px;
+}
+

@@ -59,7 +59,7 @@ const stopPropagation = function (e) {
 
       image.alt = work.title;
       const figcaption = document.createElement("figcaption");
-      figcaption.textContent = work.title;
+      figcaption.textContent = "éditer";
       figure.appendChild(image);
       figure.appendChild(figcaption);
       figure.appendChild(btnSupp);
