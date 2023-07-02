@@ -2,25 +2,38 @@ let modal = null;
 
 const openModal = function (e) {
   e.preventDefault();
-  const target = document.querySelector(e.target.getAttribute('href'))
-  modal = document.querySelector(e.target.getAttribute('href'));
+  const target = document.querySelector(e.target.getAttribute('href'));
+  document.querySelector('.overlay').style.display = 'block';
+  modal = target;
+
   modal.style.display = null;
   modal.removeAttribute('aria-hidden');
-  modal = target 
-  modal.addEventListener('click', closeModal)
+  modal.addEventListener('click', closeModal);
+  modal.querySelector('.fermer-js').addEventListener('click', closeModal);
+  modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
+}
+
+const openAjouterPhotoModal = function (e) {
+  e.preventDefault();
+  const target = document.querySelector("#ajouter-photo-modal");
+  modal = target;
+  modal.style.display = null;
+  modal.removeAttribute('aria-hidden');
+  modal.addEventListener('click', closeModal);
   modal.querySelector('.fermer-js').addEventListener('click', closeModal);
   modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
 }
 
 const closeModal = function (e) {
-    if (modal === null) return
+  if (modal === null) return;
   e.preventDefault();
+  document.querySelector('.overlay').style.display = 'none';
   modal.style.display = "none";
   modal.removeAttribute('aria-hidden', 'true');
   modal.removeEventListener('click', closeModal);
   modal.querySelector('.fermer-js').removeEventListener('click', closeModal);
   modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation);
-  modal = null
+  modal = null;
 }
 
 const stopPropagation = function (e) {
@@ -30,7 +43,9 @@ const stopPropagation = function (e) {
   document.querySelectorAll('.js-modal').forEach(a => {
     a.addEventListener('click', openModal);
   })
-
+  document.querySelectorAll('.ajout').forEach(a => {
+    a.addEventListener('click', openAjouterPhotoModal);
+  })
 
   
   fetch("http://localhost:5678/api/works")
@@ -42,28 +57,33 @@ const stopPropagation = function (e) {
   function displayWorks(works) {
     const gallery = document.querySelector("#openmodal");
     gallery.innerHTML = "";
-
+  
     works.forEach(work => {
       const figure = document.createElement("figure");
-
-      const image = document.createElement ("img");
+  
+      const imageWrapper = document.createElement("div");
+      imageWrapper.classList.add("image-wrapper");
+  
+      const image = document.createElement("img");
       image.src = work.imageUrl;
-
-      const btnSupp = document.createElement ("button");
+  
+      const btnSupp = document.createElement("button");
       btnSupp.classList.add("butonSupp");
-
       btnSupp.dataset.id = work.id;
-
-      const supp = document.createElement ("i");
+  
+      const supp = document.createElement("i");
       supp.classList.add("fa-solid", "fa-trash-can");
-
-      image.alt = work.title;
+  
       const figcaption = document.createElement("figcaption");
       figcaption.textContent = "éditer";
-      figure.appendChild(image);
+  
+      imageWrapper.appendChild(image);
+      imageWrapper.appendChild(supp);
+  
+      figure.appendChild(imageWrapper);
       figure.appendChild(figcaption);
       figure.appendChild(btnSupp);
-      btnSupp.appendChild(supp);
+  
       gallery.appendChild(figure);
     });
   }

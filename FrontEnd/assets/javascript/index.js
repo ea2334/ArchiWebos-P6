@@ -2,6 +2,7 @@ fetch("http://localhost:5678/api/works")
   .then(response => response.json())
   .then(works => {
     displayWorks(works); 
+    log();
 
     function displayWorks(works) {
       const gallery = document.querySelector(".gallery");
@@ -49,6 +50,7 @@ fetch("http://localhost:5678/api/works")
         });
       });
   });
+
 
 
 
