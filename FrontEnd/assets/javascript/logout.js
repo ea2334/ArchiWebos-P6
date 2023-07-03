@@ -6,7 +6,7 @@ function deconnexion() {
 const boutonDeconnexion = document.querySelector('#btn-logout');
 boutonDeconnexion.addEventListener("click", function(event) {
   event.preventDefault();
-  if (event.target.id === 'btn-logout') {
+  if (event.target.id === '#btn-logout') {
     deconnexion();
   }
 });

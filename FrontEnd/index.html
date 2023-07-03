@@ -62,18 +62,46 @@
 		</div>
 	<aside id="modal" class="modal" aria-hidden="true" role="dialog" style="display: none;">
 		<div class="modal-wrapper js-modal-stop">
-			<button class="fermer-js">X</button>
-        <h3>Galerie photo</h1>
+			<button class="fermer-js"><i class="fa-solid fa-xmark"></i></button>
+        <h3>Galerie photo</h3>
 			<div id="openmodal"></div>
 		<button class="ajout">Ajouter une photo</button>
 		<p class="supprimer">Supprimer une photo</a>
 		</div>
     </aside>
 
-	<aside id="ajouter-photo-modal" class="modal" aria-hidden="true" role="dialog" style="display: none;">
+	<aside id="modal-ajout" class="modal" aria-hidden="true" role="dialog" style="display: none;">
         <div class="modal-wrapper js-modal-stop">
+		<div class="retour"><i class="fa-solid fa-arrow-left"></i></div>
+			<button class="fermer-js"><i class="fa-solid fa-xmark"></i></button>
             <h3>Ajout photo</h3>
-            <button class="fermer-js">X</button>
+			<label for="img-work" class="telecharger">
+				<div class="icon-img">
+					<i class="fa-regular fa-image"></i>
+				</div>
+				<div class="text-work">+ Ajouter Photo</div>
+                <div class="format">jpg. png 4mo max</div>
+			</label>
+			<input type="file" id="work-image" name="work-image" accept="image/*" required>
+
+<form id="work-form">
+  <div class="titre-travaux">
+    <label for="titre-work">Titre</label>
+    <input type="text" id="titre-work" name="titre" required>
+  </div>
+
+  <div class="categorie-travaux">
+  <label for="categorie-work">Catégorie</label>
+  <select id="categorie-work" name="categorie-work" required>
+    <option value="" disabled selected></option>
+  </select>
+  </div>
+
+  <div class="line"></div>
+
+  <button type="submit" class="validation">Valider</button>
+</form>
+
         </div>
     </aside>
 

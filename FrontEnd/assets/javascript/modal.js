@@ -13,9 +13,11 @@ const openModal = function (e) {
   modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
 }
 
-const openAjouterPhotoModal = function (e) {
+const openModalAjout = function (e) {
   e.preventDefault();
-  const target = document.querySelector("#ajouter-photo-modal");
+  const target = document.querySelector("#modal-ajout");
+  document.querySelector('.overlay').style.display = 'block';
+
   modal = target;
   modal.style.display = null;
   modal.removeAttribute('aria-hidden');
@@ -23,6 +25,7 @@ const openAjouterPhotoModal = function (e) {
   modal.querySelector('.fermer-js').addEventListener('click', closeModal);
   modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
 }
+
 
 const closeModal = function (e) {
   if (modal === null) return;
@@ -44,8 +47,9 @@ const stopPropagation = function (e) {
     a.addEventListener('click', openModal);
   })
   document.querySelectorAll('.ajout').forEach(a => {
-    a.addEventListener('click', openAjouterPhotoModal);
+    a.addEventListener('click', openModalAjout);
   })
+
 
   
   fetch("http://localhost:5678/api/works")
