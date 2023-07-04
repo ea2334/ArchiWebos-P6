@@ -112,8 +112,6 @@ ImageWork.addEventListener("change", function(event) {
   reader.readAsDataURL(file);
 });
 
-
-
   const categorieSelect = document.querySelector("#categorie-work");
 
 function fetchCategories() {
@@ -137,6 +135,35 @@ fetchCategories();
 
 
 
+function deleteWork() {
+
+  const supprimer = document.querySelectorAll('i');
+  const figures = document.querySelectorAll('.figure');
+
+
+  modal.addEventListener('click', i);
+
+
+      if (token) {
+        fetch(`http://localhost:5678/api/works/${workId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (response.ok) {
+              figure.remove();
+            } else {
+              console.error('Erreur lors de la suppression du travail');
+            }
+          })
+          .catch(error => {
+            console.error('Erreur lors de la requête de suppression :', error);
+          });
+      }
+    };
+  
 
 
 
