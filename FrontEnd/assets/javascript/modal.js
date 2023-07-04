@@ -91,4 +91,36 @@ const stopPropagation = function (e) {
       gallery.appendChild(figure);
     });
   }
-  
+
+
+
+
+function deleteWork(){
+  const deleteButton = document.getElementByClass(i);
+
+  deleteButton.addEventListener('click', () => {
+    if (token) {
+      fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            figure.remove();
+          } else {
+            console.error('Erreur lors de la suppression du travail');
+          }
+        })
+        .catch(error => {
+          console.error('Erreur lors de la requête de suppression :', error);
+        });
+    }
+  });
+}
+
+
+
+
+

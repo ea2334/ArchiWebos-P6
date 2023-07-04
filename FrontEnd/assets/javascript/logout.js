@@ -6,7 +6,7 @@ function deconnexion() {
 const boutonDeconnexion = document.querySelector('#btn-logout');
 boutonDeconnexion.addEventListener("click", function(event) {
   event.preventDefault();
-  if (event.target.id === '#btn-logout') {
+  if (event.target.id === 'btn-logout') {
     deconnexion();
   }
 });
@@ -15,19 +15,19 @@ boutonDeconnexion.addEventListener("click", function(event) {
 function log() {
   const logout = document.querySelector(".logout");
   const login = document.querySelector(".login");
-  /*
-  const barAdmin = document.querySelector(".barre");
+  
+  /*const barAdmin = document.querySelector(".barre");
   const btnModifier = document.querySelector(".js-modal");
 
-  const filtreee = document.querySelector(".filters");*/
+  /*const filtreee = document.querySelector(".filters");*/
 
 
   if (localStorage.getItem('token')) {
     logout.style.display = "block";
     login.style.display = "none";
     
-    /*barAdmin.style.display = "block";
-    btnModifier.style.display = "block";*/
+    barAdmin.style.display = "block";
+    btnModifier.style.display = "block";
 
   } else {
     logout.style.display = "none";
