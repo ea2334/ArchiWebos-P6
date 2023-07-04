@@ -17,7 +17,6 @@ const openModalAjout = function (e) {
   e.preventDefault();
   const target = document.querySelector("#modal-ajout");
   document.querySelector('.overlay').style.display = 'block';
-
   modal = target;
   modal.style.display = null;
   modal.removeAttribute('aria-hidden');
@@ -92,33 +91,50 @@ const stopPropagation = function (e) {
     });
   }
 
+  const BtnAjout = document.querySelector("#btn-ajout");
+  const ImgWork = document.querySelector("#work-image");
+
+  BtnAjout.addEventListener("click", function() {
+  ImgWork.click();
+});
+
+const ImageWork = document.querySelector("#work-image");
+const ApercuImage = document.querySelector("#image-apercu");
+
+ImageWork.addEventListener("change", function(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    ApercuImage.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
 
 
 
-function deleteWork(){
-  const deleteButton = document.getElementByClass(i);
+  const categorieSelect = document.querySelector("#categorie-work");
 
-  deleteButton.addEventListener('click', () => {
-    if (token) {
-      fetch(`http://localhost:5678/api/works/${workId}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-        .then(response => {
-          if (response.ok) {
-            figure.remove();
-          } else {
-            console.error('Erreur lors de la suppression du travail');
-          }
-        })
-        .catch(error => {
-          console.error('Erreur lors de la requête de suppression :', error);
-        });
-    }
-  });
+function fetchCategories() {
+  fetch("http://localhost:5678/api/categories")
+    .then(response => response.json())
+    .then(categories => {
+      categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.textContent = category.name;
+        categorieSelect.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error("Erreur lors de la requête GET pour récupérer les catégories :", error);
+    });
 }
+
+fetchCategories();
+
+
 
 
 
