@@ -1,5 +1,6 @@
 let modal = null;
 
+
 const openModal = function (e) {
   e.preventDefault();
   const target = document.querySelector(e.target.getAttribute('href'));
@@ -133,37 +134,113 @@ function fetchCategories() {
 fetchCategories();
 
 
+const retourIcone = document.querySelector('.retour');
 
+retourIcone.addEventListener('click', function(e) {
+  closeModal(e);
+  openModal(e, '#modal');
+  });
 
-function deleteWork() {
+  function deleteWork() {
 
-  const supprimer = document.querySelectorAll('i');
-  const figures = document.querySelectorAll('.figure');
-
-
-  modal.addEventListener('click', i);
-
-
-      if (token) {
-        fetch(`http://localhost:5678/api/works/${workId}`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-          .then(response => {
-            if (response.ok) {
-              figure.remove();
-            } else {
-              console.error('Erreur lors de la suppression du travail');
+    const supprimer = document.querySelectorAll('i');
+    const figures = document.querySelectorAll('.figure');
+  
+  
+    modal.addEventListener('click', i);
+  
+  
+        if (token) {
+          fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${token}`
             }
           })
-          .catch(error => {
-            console.error('Erreur lors de la requête de suppression :', error);
-          });
-      }
-    };
-  
+            .then(response => {
+              if (response.ok) {
+                figure.remove();
+              } else {
+                console.error('Erreur lors de la suppression du travail');
+              }
+            })
+            .catch(error => {
+              console.error('Erreur lors de la requête de suppression :', error);
+            });
+        }
+      };
+
+const workForm = document.getElementById('work-form');
+
+workForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const titre = document.getElementById('titre-work').value;
+  const categorieId = document.getElementById('categorie-work').value;
+  const imageFile = document.getElementById('work-image').files[0];
+
+  const formData = new FormData();
+  formData.append('titre', titre);
+  formData.append('categorieId', categorieId);
+  formData.append('image', imageFile);
+
+  fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .then(work => {
+      displayWork(work);
+      closeModal(e);
+    })
+    .catch(error => {
+      console.error('Erreur lors de l\'ajout du travail :', error);
+    });
+});
+
+function displayWork(work) {
+  const gallery = document.querySelector("#openmodal");
+
+  const figure = document.createElement("figure");
+
+  const imageWrapper = document.createElement("div");
+  imageWrapper.classList.add("image-wrapper");
+
+  const image = document.createElement("img");
+  image.src = work.imageUrl;
+
+  const btnSupp = document.createElement("button");
+  btnSupp.classList.add("butonSupp");
+  btnSupp.dataset.id = work.id;
+  btnSupp.addEventListener('click', deleteWork);
+
+  const supp = document.createElement("i");
+  supp.classList.add("fa-solid", "fa-trash-can");
+
+  const figcaption = document.createElement("figcaption");
+  figcaption.textContent = work.titre;
+
+  const editCaption = document.createElement("figcaption");
+  editCaption.textContent = "éditer";
+
+  imageWrapper.appendChild(image);
+  imageWrapper.appendChild(supp);
+
+  figure.appendChild(imageWrapper);
+  figure.appendChild(figcaption);
+  figure.appendChild(btnSupp);
+  figure.appendChild(editCaption);
+
+  gallery.appendChild(figure);
+}
+
+
+
+
+
+
+
+
 
 
 
