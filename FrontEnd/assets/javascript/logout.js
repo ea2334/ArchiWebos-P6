@@ -18,6 +18,7 @@ function log() {
   
   /* barAdmin = document.querySelector("#barre");
   const btnModifier = document.querySelector(".js-modal");
+  const btnModifierDeux = document.querySelector(".modifier-deux");
 
   const lesfiltres = document.querySelector("#filtres");*/
 
@@ -28,7 +29,10 @@ function log() {
     
     /*barAdmin.style.display = "block";
     btnModifier.style.display = "block";
-    lesfiltres.style.display = "none";*/
+    btnModifierDeux.style.display = "block"
+    lesfiltres.style.display = "none";
+    */
+    
 
   } else {
     logout.style.display = "none";
@@ -36,6 +40,7 @@ function log() {
 
     /*barAdmin.style.display = "none";
     btnModifier.style.display = "none";
+    btnModifierDeux.style.display = "none"
     lesfiltres.style.display = "block";
 */
   }}

@@ -141,34 +141,44 @@ retourIcone.addEventListener('click', function(e) {
   openModal(e, '#modal');
   });
 
-  function deleteWork() {
 
-    const supprimer = document.querySelectorAll('i');
-    const figures = document.querySelectorAll('.figure');
-  
-  
-    modal.addEventListener('click', i);
-  
-  
-        if (token) {
-          fetch(`http://localhost:5678/api/works/${workId}`, {
-            method: 'DELETE',
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
-            .then(response => {
-              if (response.ok) {
-                figure.remove();
-              } else {
-                console.error('Erreur lors de la suppression du travail');
-              }
-            })
-            .catch(error => {
-              console.error('Erreur lors de la requête de suppression :', error);
-            });
+  function deleteWork(workId) {
+
+    const figure = document.getElementById(`figure-${workId}`);
+    const token = 'token';
+    
+    if (token) {
+      fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-      };
+      })
+      .then(response => {
+        if (response.ok) {
+          figure.remove();
+          console.log('Travail supprimé avec succès !');
+        } else {
+          console.error('Erreur lors de la suppression du travail');
+        }
+      })
+      .catch(error => {
+        console.error('Erreur lors de la requête de suppression :', error);
+      });
+    }
+  }
+  
+ document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('fa-trash-can')) {
+      const icon = event.target;
+      const figure = icon.closest('figure');
+      const workId = figure.dataset.id;
+      deleteWork(workId);
+    }
+  });
+  
+  
+/*Ajout Travaux*/
 
 const workForm = document.getElementById('work-form');
 
@@ -232,6 +242,7 @@ function displayWork(work) {
   figure.appendChild(editCaption);
 
   gallery.appendChild(figure);
+
 }
 
 
