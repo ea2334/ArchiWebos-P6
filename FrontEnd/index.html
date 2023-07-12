@@ -21,7 +21,9 @@
 </div>
 	</div>
 <header>
+	<a href="index.html">
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	</a>
 	<nav>
 		<ul>
 		  <li>projets</li>
@@ -32,8 +34,8 @@
 			</div>
 		  </li>
 		  <li>
-			<div class="logout" id="btn-logout">
-			  <a href="#">logout</a>
+			<div class="logout">
+			  <a href="#" id="btn-logout">logout</a>
 			</div>
 		  </li>
 		  <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -85,10 +87,8 @@
                 <div class="format">jpg. png 4mo max</div>
                 <input type="file" id="work-image" name="work-image" accept="image/*" required style="display: none;">
 				<img id="image-apercu" src="" alt="">
-
 			</label>
 			
-
 <form id="work-form">
   <div class="titre-travaux">
     <label for="titre-work">Titre</label>
@@ -103,6 +103,11 @@
   </div>
 
   <div class="line"></div>
+
+  <div class="image-travaux">
+    <label for="image">Image</label>
+    <input type="file" id="image" name="image" accept="image/*" required>
+  </div>
 
   <button type="submit" class="validation">Valider</button>
 </form>

@@ -50,8 +50,8 @@ const stopPropagation = function (e) {
     a.addEventListener('click', openModalAjout);
   })
 
+  /* Affichage travaux modale */
 
-  
   fetch("http://localhost:5678/api/works")
   .then (response => response.json())
   .then(works => {
@@ -91,6 +91,7 @@ const stopPropagation = function (e) {
       gallery.appendChild(figure);
     });
   }
+  
 
   const BtnAjout = document.querySelector("#btn-ajout");
   const ImgWork = document.querySelector("#work-image");
@@ -142,60 +143,95 @@ retourIcone.addEventListener('click', function(e) {
   });
 
 
-  function deleteWork(workId) {
+  /* Suppression travaux */
 
-    const figure = document.getElementById(`figure-${workId}`);
-    const token = 'token';
-    
-    if (token) {
-      fetch(`http://localhost:5678/api/works/${workId}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
+  function deleteWork(workId) {
+    const token = localStorage.getItem('token');
+    fetch(`http://localhost:5678/api/works/${workId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then(response => {
         if (response.ok) {
-          figure.remove();
-          console.log('Travail supprimé avec succès !');
-        } else {
+          const figure = document.querySelector(`figure[data-id="${workId}"]`);
+          if (figure) {
+            figure.remove();
+            console.log('Travail');
+          }
+        } 
+        else {
           console.error('Erreur lors de la suppression du travail');
         }
       })
       .catch(error => {
         console.error('Erreur lors de la requête de suppression :', error);
       });
-    }
   }
   
- document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('fa-trash-can')) {
-      const icon = event.target;
-      const figure = icon.closest('figure');
-      const workId = figure.dataset.id;
-      deleteWork(workId);
-    }
-  });
+  function displayWorks(works) {
+    const gallery = document.querySelector("#openmodal");
+    gallery.innerHTML = "";
   
+    works.forEach(work => {
+      const figure = document.createElement("figure");
+      figure.dataset.id = work.id;
   
+      const imageWrapper = document.createElement("div");
+      imageWrapper.classList.add("image-wrapper");
+  
+      const image = document.createElement("img");
+      image.src = work.imageUrl;
+  
+      const btnSupp = document.createElement("button");
+      btnSupp.classList.add("butonSupp");
+  
+      const supp = document.createElement("i");
+      supp.classList.add("fa-solid", "fa-trash-can");
+      supp.addEventListener('click', function() {
+        deleteWork(work.id);
+      });
+  
+      const figcaption = document.createElement("figcaption");
+      figcaption.textContent = "éditer";
+  
+      imageWrapper.appendChild(image);
+      imageWrapper.appendChild(supp);
+  
+      figure.appendChild(imageWrapper);
+      figure.appendChild(figcaption);
+      figure.appendChild(btnSupp);
+  
+      gallery.appendChild(figure);
+    });
+  }
+  
+
 /*Ajout Travaux*/
 
-const workForm = document.getElementById('work-form');
 
-workForm.addEventListener('submit', function(e) {
+const workForm = document.getElementById('work-form');
+const titre = document.getElementById('titre-work');
+const categorieId = document.getElementById('categorie-work');
+const imageFile = document.getElementById('image');
+const submit = document.getElementById('submit');
+
+
+submit.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const titre = document.getElementById('titre-work').value;
-  const categorieId = document.getElementById('categorie-work').value;
-  const imageFile = document.getElementById('work-image').files[0];
-
-  const formData = new FormData();
-  formData.append('titre', titre);
-  formData.append('categorieId', categorieId);
-  formData.append('image', imageFile);
+const token = localStorage.getItem('token');
+const formData = new FormData();
+formData.append('title', titre.value);
+formData.append('category', categorieId.value);
+formData.append('image', imageFile.files[0]);
 
   fetch('http://localhost:5678/api/works', {
     method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
     body: formData
   })
     .then(response => response.json())
@@ -207,6 +243,7 @@ workForm.addEventListener('submit', function(e) {
       console.error('Erreur lors de l\'ajout du travail :', error);
     });
 });
+
 
 function displayWork(work) {
   const gallery = document.querySelector("#openmodal");
@@ -244,6 +281,8 @@ function displayWork(work) {
   gallery.appendChild(figure);
 
 }
+
+
 
 
 
