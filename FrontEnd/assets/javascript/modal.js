@@ -64,6 +64,7 @@ const stopPropagation = function (e) {
   
     works.forEach(work => {
       const figure = document.createElement("figure");
+      figure.id = work.id;
   
       const imageWrapper = document.createElement("div");
       imageWrapper.classList.add("image-wrapper");
@@ -87,6 +88,7 @@ const stopPropagation = function (e) {
       figure.appendChild(imageWrapper);
       figure.appendChild(figcaption);
       figure.appendChild(btnSupp);
+      btnSupp.appendChild(supp)
   
       gallery.appendChild(figure);
     });
@@ -162,42 +164,7 @@ retourIcone.addEventListener('click', function(e) {
       });
   }
   
-  function displayWorks(works) {
-    const gallery = document.querySelector("#openmodal");
-    gallery.innerHTML = "";
   
-    works.forEach(work => {
-      const figure = document.createElement("figure");
-      figure.dataset.id = work.id;
-  
-      const imageWrapper = document.createElement("div");
-      imageWrapper.classList.add("image-wrapper");
-  
-      const image = document.createElement("img");
-      image.src = work.imageUrl;
-  
-      const btnSupp = document.createElement("button");
-      btnSupp.classList.add("butonSupp");
-  
-      const supp = document.createElement("i");
-      supp.classList.add("fa-solid", "fa-trash-can");
-      supp.addEventListener('click', function() {
-        deleteWork(work.id);
-      });
-  
-      const figcaption = document.createElement("figcaption");
-      figcaption.textContent = "éditer";
-  
-      imageWrapper.appendChild(image);
-      imageWrapper.appendChild(supp);
-  
-      figure.appendChild(imageWrapper);
-      figure.appendChild(figcaption);
-      figure.appendChild(btnSupp);
-  
-      gallery.appendChild(figure);
-    });
-  }
   
 
 /*Ajout Travaux*/
@@ -226,8 +193,8 @@ formData.append('image', imageFile.files[0]);
     body: formData
   })
     .then(response => response.json())
-    .then(work => {
-      displayWork(work);
+    .then(works => {
+      displayWorks(works);
       closeModal(e);
     })
     .catch(error => {
@@ -235,42 +202,6 @@ formData.append('image', imageFile.files[0]);
     });
 });
 
-
-function displayWork(work) {
-  const gallery = document.querySelector("#openmodal");
-
-  const figure = document.createElement("figure");
-
-  const imageWrapper = document.createElement("div");
-  imageWrapper.classList.add("image-wrapper");
-
-  const image = document.createElement("img");
-  image.src = work.imageUrl;
-
-  const btnSupp = document.createElement("button");
-  btnSupp.classList.add("butonSupp");
-  btnSupp.dataset.id = work.id;
-  btnSupp.addEventListener('click', deleteWork);
-
-  const supp = document.createElement("i");
-  supp.classList.add("fa-solid", "fa-trash-can");
-
-  const figcaption = document.createElement("figcaption");
-  figcaption.textContent = work.titre;
-
-  const editCaption = document.createElement("figcaption");
-  editCaption.textContent = "éditer";
-
-  imageWrapper.appendChild(image);
-  imageWrapper.appendChild(supp);
-
-  figure.appendChild(imageWrapper);
-  figure.appendChild(figcaption);
-  figure.appendChild(btnSupp);
-  figure.appendChild(editCaption);
-
-  gallery.appendChild(figure);
-}
 
 /* Affichage image télechargement */
 
