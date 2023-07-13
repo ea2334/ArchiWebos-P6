@@ -3,7 +3,7 @@ fetch("http://localhost:5678/api/works")
   .then(works => {
     displayWorks(works); 
     log();
-
+    
     function displayWorks(works) {
       const gallery = document.querySelector(".gallery");
       gallery.innerHTML = "";

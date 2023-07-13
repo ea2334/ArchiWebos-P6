@@ -76,6 +76,7 @@
 
 	<aside id="modal-ajout" class="modal" aria-hidden="true" role="dialog" style="display: none;">
         <div class="modal-wrapper js-modal-stop">
+
 		<div class="retour"><i class="fa-solid fa-arrow-left"></i></div>
 			<button class="fermer-js"><i class="fa-solid fa-xmark"></i></button>
             <h3>Ajout photo</h3>
@@ -83,36 +84,34 @@
 				<div class="icon-img">
 					<i class="fa-regular fa-image"></i>
 				</div>
-				<div class="text-work" id="btn-ajout">+ Ajouter Photo</div>
+				<div class="image-travaux">
+					<label for="image">+ Ajouter photo</label>
+					<input type="file" id="image" name="image" accept="image/*" required>
+				</div>
                 <div class="format">jpg. png 4mo max</div>
                 <input type="file" id="work-image" name="work-image" accept="image/*" required style="display: none;">
 				<img id="image-apercu" src="" alt="">
 			</label>
 			
-<form id="work-form">
-  <div class="titre-travaux">
-    <label for="titre-work">Titre</label>
-    <input type="text" id="titre-work" name="titre" required>
-  </div>
+           <form id="work-form">
+             <div class="titre-travaux">
+              <label for="titre-work">Titre</label>
+              <input type="text" id="titre-work" name="titre" required>
+             </div>
 
-  <div class="categorie-travaux">
-  <label for="categorie-work">Catégorie</label>
-  <select id="categorie-work" name="categorie-work" required>
-    <option value="" disabled selected></option>
-  </select>
-  </div>
+             <div class="categorie-travaux">
+              <label for="categorie-work">Catégorie</label>
+               <select id="categorie-work" name="categorie-work" required>
+               <option value="" disabled selected></option>
+               </select>
+             </div>
 
-  <div class="line"></div>
+             <div class="line"></div>
 
-  <div class="image-travaux">
-    <label for="image">Image</label>
-    <input type="file" id="image" name="image" accept="image/*" required>
-  </div>
+             <button id="submit" type="submit" class="validation">Valider</button>
+           </form>
 
-  <button type="submit" class="validation">Valider</button>
-</form>
-
-        </div>
+ </div>
     </aside>
 
 

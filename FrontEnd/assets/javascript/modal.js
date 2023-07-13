@@ -92,14 +92,6 @@ const stopPropagation = function (e) {
     });
   }
   
-
-  const BtnAjout = document.querySelector("#btn-ajout");
-  const ImgWork = document.querySelector("#work-image");
-
-  BtnAjout.addEventListener("click", function() {
-  ImgWork.click();
-});
-
 const ImageWork = document.querySelector("#work-image");
 const ApercuImage = document.querySelector("#image-apercu");
 
@@ -158,7 +150,7 @@ retourIcone.addEventListener('click', function(e) {
           const figure = document.querySelector(`figure[data-id="${workId}"]`);
           if (figure) {
             figure.remove();
-            console.log('Travail');
+            console.log('Travail supprimé');
           }
         } 
         else {
@@ -209,7 +201,6 @@ retourIcone.addEventListener('click', function(e) {
   
 
 /*Ajout Travaux*/
-
 
 const workForm = document.getElementById('work-form');
 const titre = document.getElementById('titre-work');
@@ -279,8 +270,51 @@ function displayWork(work) {
   figure.appendChild(editCaption);
 
   gallery.appendChild(figure);
-
 }
+
+/* Affichage image télechargement */
+
+const inputImage = document.getElementById('image');
+const labelImage = document.querySelector('.image-travaux label');
+const telechargement = document.querySelector('.telecharger');
+
+const imageApercu = document.createElement('img');
+imageApercu.setAttribute('id', 'image-apercu');
+imageApercu.style.maxWidth = '200px';
+imageApercu.style.maxHeight = '100%';
+imageApercu.style.marginLeft = '110px';
+
+inputImage.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    imageApercu.src = reader.result;
+    imageApercu.style.display = 'block'; 
+    labelImage.style.display = 'none'; 
+
+    while (telechargement.firstChild) {
+      telechargement.removeChild(telechargement.firstChild);
+    }
+
+    telechargement.appendChild(imageApercu);
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    imageApercu.src = '';
+    imageApercu.style.display = 'none';
+    labelImage.style.display = 'block';
+  }
+});
+
+
+
+
+
+
+
 
 
 

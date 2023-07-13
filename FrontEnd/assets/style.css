@@ -572,3 +572,22 @@ margin-top: 45px;
 	margin-left: 60px;
     margin-top: 10px;
 }
+
+.image-travaux{
+	display: flex;
+}
+
+.image-travaux input{
+	display: none;
+}
+
+.image-travaux label{
+	text-align: center;
+    align-items: center;
+    background: #CBD6DC;
+    border-radius: 30px;
+    width: 160px;
+    height: 20px;
+    color: #306685;
+    margin-left: 125px;
+}
